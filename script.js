@@ -27,44 +27,39 @@ function getHumanChoice() {
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
-        console.log("Tie");
+        div.innerHTML = `<p>Tie</p>`;
     } else if (humanChoice === "rock" && computerChoice === "scissors") {
-        console.log("Human won");
+        div.innerHTML = `<p>Human won</p>`;
         humanScore += 1;
     } else if (humanChoice === "rock" && computerChoice === "paper") {
-        console.log("Computer won");
+        div.innerHTML = `<p>Computer won</p>`;
         computerScore += 1;
     } else if (humanChoice === "scissors" && computerChoice === "rock") {
-        console.log("Computer won");
+        div.innerHTML = `<p>Computer won</p>`;
         computerScore += 1;
     } else if (humanChoice === "scissors" && computerChoice === "paper") {
-        console.log("Human won");
+        div.innerHTML = `<p>Human won</p>`;
         humanScore += 1;
     } else if (humanChoice === "paper" && computerChoice === "rock") {
-        console.log("Human won");
+        div.innerHTML = `<p>Human won</p>`;
         humanScore += 1;
     } else if (humanChoice === "paper" && computerChoice === "scissors") {
-        console.log("Computer won");
+        div.innerHTML = `<p>Computer won</p>`;
         computerScore += 1;
     }
 }
 
-function playGame() {
-    let x = 1;
-    while (x <= 5) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-        x += 1;
-    }
-    if(humanScore == computerScore){
-        console.log("It's a Tie")
-    } else if(humanScore > computerScore){
-        console.log("You won!")
-    } else if(humanScore < computerScore){
-        console.log("Computer won...")
-    }
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const div = document.querySelector("#result")
 
-}
-
-playGame();
+rock.addEventListener("click", () => {
+    playRound("rock", getComputerChoice());
+})
+paper.addEventListener("click", () => {
+    playRound("paper", getComputerChoice());
+})
+scissors.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice())
+})
